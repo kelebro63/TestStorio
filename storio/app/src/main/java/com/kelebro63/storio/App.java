@@ -5,6 +5,8 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
+import com.kelebro63.storio.databаse.DbModule;
+
 /**
  * Created by Bistrov Alexey on 24.03.2016.
  */

@@ -12,9 +12,9 @@ import dagger.Provides;
 public class AppModule {
 
     @NonNull
-    private final SampleApp app;
+    private final App app;
 
-    AppModule(@NonNull SampleApp app) {
+    AppModule(@NonNull App app) {
         this.app = app;
     }
 

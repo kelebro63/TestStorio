@@ -4,15 +4,8 @@ import android.content.Context;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.support.annotation.NonNull;
 
-import com.pushtorefresh.storio.sample.db.entities.Tweet;
-import com.pushtorefresh.storio.sample.db.entities.TweetSQLiteTypeMapping;
-import com.pushtorefresh.storio.sample.db.entities.TweetWithUser;
-import com.pushtorefresh.storio.sample.db.entities.User;
-import com.pushtorefresh.storio.sample.db.entities.UserSQLiteTypeMapping;
-import com.pushtorefresh.storio.sample.db.resolvers.TweetWithUserDeleteResolver;
-import com.pushtorefresh.storio.sample.db.resolvers.TweetWithUserGetResolver;
-import com.pushtorefresh.storio.sample.db.resolvers.TweetWithUserPutResolver;
-import com.pushtorefresh.storio.sqlite.SQLiteTypeMapping;
+import com.kelebro63.storio.databаse.Entities.Book;
+import com.kelebro63.storio.databаse.Entities.BookSQLiteTypeMapping;
 import com.pushtorefresh.storio.sqlite.StorIOSQLite;
 import com.pushtorefresh.storio.sqlite.impl.DefaultStorIOSQLite;
 
@@ -35,7 +28,7 @@ public class DbModule {
     public StorIOSQLite provideStorIOSQLite(@NonNull SQLiteOpenHelper sqLiteOpenHelper) {
         return DefaultStorIOSQLite.builder()
                 .sqliteOpenHelper(sqLiteOpenHelper)
-.addTypeMapping(Tweet.class, new TweetSQLiteTypeMapping())
+                .addTypeMapping(Book.class, new BookSQLiteTypeMapping())
                 .build();
     }
 

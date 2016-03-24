@@ -16,7 +16,7 @@ import dagger.Component;
         }
 )
 public interface AppComponent {
-    void inject(@NonNull TweetsFragment fragment);
+    void inject(@NonNull MainActivity activity);
 
     //void inject(@NonNull SampleContentProvider sampleContentProvider);
 }
