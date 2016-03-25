@@ -3,6 +3,7 @@ package com.kelebro63.storio;
 import android.support.annotation.NonNull;
 
 import com.kelebro63.storio.databаse.DbModule;
+import com.kelebro63.storio.ui.MainActivity;
 
 import javax.inject.Singleton;
 
