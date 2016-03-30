@@ -26,6 +26,9 @@ public class BooksTable {
     @NonNull
     public static final String COLUMN_NAME = "name";
 
+    @NonNull
+    public static final String COLUMN_READER = "reader_id";
+
     // Yep, with StorIO you can safely store queries as objects and reuse them, they are immutable
     @NonNull
     public static final Query QUERY_ALL = Query.builder()
@@ -44,6 +47,7 @@ public class BooksTable {
         return "CREATE TABLE " + TABLE + "("
                 + COLUMN_ID + " INTEGER NOT NULL PRIMARY KEY, "
                 + COLUMN_AUTHOR + " TEXT NOT NULL, "
+                + COLUMN_READER + " INTEGER NOT NULL, "
                 + COLUMN_NAME + " TEXT NOT NULL"
                 + ");";
     }

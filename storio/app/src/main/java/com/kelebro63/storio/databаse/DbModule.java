@@ -5,7 +5,10 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.support.annotation.NonNull;
 
 import com.kelebro63.storio.databаse.Entities.Book;
-import com.kelebro63.storio.databаse.Entities.BookSQLiteTypeMapping;
+import com.kelebro63.storio.databаse.resolvers.BookDeleteResolver;
+import com.kelebro63.storio.databаse.resolvers.BookGetResolver;
+import com.kelebro63.storio.databаse.resolvers.BookPutResolver;
+import com.pushtorefresh.storio.sqlite.SQLiteTypeMapping;
 import com.pushtorefresh.storio.sqlite.StorIOSQLite;
 import com.pushtorefresh.storio.sqlite.impl.DefaultStorIOSQLite;
 
@@ -28,7 +31,11 @@ public class DbModule {
     public StorIOSQLite provideStorIOSQLite(@NonNull SQLiteOpenHelper sqLiteOpenHelper) {
         return DefaultStorIOSQLite.builder()
                 .sqliteOpenHelper(sqLiteOpenHelper)
-                .addTypeMapping(Book.class, new BookSQLiteTypeMapping())
+                .addTypeMapping(Book.class, SQLiteTypeMapping.<Book>builder()
+                        .putResolver(new BookPutResolver())
+                        .getResolver(new BookGetResolver())
+                        .deleteResolver(new BookDeleteResolver())
+                        .build())
                 .build();
     }
 

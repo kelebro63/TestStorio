@@ -12,6 +12,7 @@ import android.widget.Toast;
 import com.kelebro63.storio.App;
 import com.kelebro63.storio.R;
 import com.kelebro63.storio.databаse.Entities.Book;
+import com.kelebro63.storio.databаse.Entities.Reader;
 import com.kelebro63.storio.databаse.tables.BooksTable;
 import com.pushtorefresh.storio.sqlite.StorIOSQLite;
 import com.pushtorefresh.storio.sqlite.operations.put.PutResults;
@@ -79,15 +80,17 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(MainActivity.this, "click", Toast.LENGTH_LONG).show();
         final List<Book> books = new ArrayList<Book>();
 
-        books.add(Book.newBook("artem_zin", "Checkout StorIO — modern API for SQLiteDatabase & ContentResolver"));
-        books.add(Book.newBook("HackerNews", "It's revolution! Dolphins can write news on HackerNews with our new app!"));
-        books.add(Book.newBook("AndroidDevReddit", "Awesome library — StorIO"));
-        books.add(Book.newBook("Facebook", "Facebook community in Twitter is more popular than Facebook community in Facebook and Instagram!"));
-        books.add(Book.newBook("Google", "Android be together not the same: AOSP, AOSP + Google Apps, Samsung Android"));
-        books.add(Book.newBook("Reddit", "Now we can send funny gifs directly into your brain via Oculus Rift app!"));
-        books.add(Book.newBook("ElonMusk", "Tesla Model S OTA update with Android Auto 5.2, fixes for memory leaks"));
-        books.add(Book.newBook("AndroidWeekly", "Special issue #1: StorIO — forget about SQLiteDatabase, ContentResolver APIs, ORMs suck!"));
-        books.add(Book.newBook("Apple", "Yosemite update: fixes for Wifi issues, yosemite-wifi-patch#142"));
+        Reader reader = Reader.newReader("test Reader");
+
+        books.add(Book.newBook("artem_zin", "Checkout StorIO — modern API for SQLiteDatabase & ContentResolver", reader));
+        books.add(Book.newBook("HackerNews", "It's revolution! Dolphins can write news on HackerNews with our new app!", reader));
+        books.add(Book.newBook("AndroidDevReddit", "Awesome library — StorIO", reader));
+        books.add(Book.newBook("Facebook", "Facebook community in Twitter is more popular than Facebook community in Facebook and Instagram!", reader));
+        books.add(Book.newBook("Google", "Android be together not the same: AOSP, AOSP + Google Apps, Samsung Android", reader));
+        books.add(Book.newBook("Reddit", "Now we can send funny gifs directly into your brain via Oculus Rift app!", reader));
+        books.add(Book.newBook("ElonMusk", "Tesla Model S OTA update with Android Auto 5.2, fixes for memory leaks", reader));
+        books.add(Book.newBook("AndroidWeekly", "Special issue #1: StorIO — forget about SQLiteDatabase, ContentResolver APIs, ORMs suck!", reader));
+        books.add(Book.newBook("Apple", "Yosemite update: fixes for Wifi issues, yosemite-wifi-patch#142", reader));
 
         // Looks/reads nice, isn't it?
         storIOSQLite
@@ -100,6 +103,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onError(Throwable e) {
                         Toast.makeText(MainActivity.this, "ошибка добавления данных", Toast.LENGTH_LONG).show();
+                        e.printStackTrace();
                     }
 
                     @Override

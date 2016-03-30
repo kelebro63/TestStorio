@@ -74,7 +74,7 @@ public class Reader {
 
     @Override
     public String toString() {
-        return "Tweet{" +
+        return "Reader{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 '}';
