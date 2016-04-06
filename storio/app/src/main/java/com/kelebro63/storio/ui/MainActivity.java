@@ -82,15 +82,10 @@ public class MainActivity extends AppCompatActivity {
 
         Reader reader = Reader.newReader("test Reader");
 
-        books.add(Book.newBook("artem_zin", "Checkout StorIO — modern API for SQLiteDatabase & ContentResolver", reader));
-        books.add(Book.newBook("HackerNews", "It's revolution! Dolphins can write news on HackerNews with our new app!", reader));
-        books.add(Book.newBook("AndroidDevReddit", "Awesome library — StorIO", reader));
-        books.add(Book.newBook("Facebook", "Facebook community in Twitter is more popular than Facebook community in Facebook and Instagram!", reader));
-        books.add(Book.newBook("Google", "Android be together not the same: AOSP, AOSP + Google Apps, Samsung Android", reader));
-        books.add(Book.newBook("Reddit", "Now we can send funny gifs directly into your brain via Oculus Rift app!", reader));
-        books.add(Book.newBook("ElonMusk", "Tesla Model S OTA update with Android Auto 5.2, fixes for memory leaks", reader));
-        books.add(Book.newBook("AndroidWeekly", "Special issue #1: StorIO — forget about SQLiteDatabase, ContentResolver APIs, ORMs suck!", reader));
-        books.add(Book.newBook("Apple", "Yosemite update: fixes for Wifi issues, yosemite-wifi-patch#142", reader));
+        books.add(Book.newBook("author_1", "title_1", reader));
+        books.add(Book.newBook("author_2", "title_2", reader));
+        books.add(Book.newBook("author_3", "title_3", reader));
+
 
         // Looks/reads nice, isn't it?
         storIOSQLite

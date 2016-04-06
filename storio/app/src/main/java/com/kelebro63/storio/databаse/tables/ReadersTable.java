@@ -33,7 +33,7 @@ public class ReadersTable {
     @NonNull
     public static String getCreateTableQuery() {
         return "CREATE TABLE " + TABLE + "("
-                + COLUMN_ID + " INTEGER NOT NULL PRIMARY KEY, "
+                + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT , "
                 + COLUMN_NAME + " TEXT NOT NULL"
                 + ");";
     }

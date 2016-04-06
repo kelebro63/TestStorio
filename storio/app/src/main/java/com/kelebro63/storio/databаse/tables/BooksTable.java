@@ -24,7 +24,7 @@ public class BooksTable {
      * For example: "Check out StorIO — modern API for SQLiteDatabase & ContentResolver #androiddev"
      */
     @NonNull
-    public static final String COLUMN_NAME = "name";
+    public static final String COLUMN_TITLE = "name";
 
     @NonNull
     public static final String COLUMN_READER = "reader_id";
@@ -45,10 +45,10 @@ public class BooksTable {
     @NonNull
     public static String getCreateTableQuery() {
         return "CREATE TABLE " + TABLE + "("
-                + COLUMN_ID + " INTEGER NOT NULL PRIMARY KEY, "
+                + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT , "
                 + COLUMN_AUTHOR + " TEXT NOT NULL, "
                 + COLUMN_READER + " INTEGER NOT NULL, "
-                + COLUMN_NAME + " TEXT NOT NULL"
+                + COLUMN_TITLE + " TEXT NOT NULL"
                 + ");";
     }
 }

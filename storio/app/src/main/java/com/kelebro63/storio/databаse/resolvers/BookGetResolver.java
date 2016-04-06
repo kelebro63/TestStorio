@@ -5,6 +5,8 @@ import android.support.annotation.NonNull;
 
 import com.kelebro63.storio.databаse.Entities.Book;
 import com.kelebro63.storio.databаse.Entities.Reader;
+import com.kelebro63.storio.databаse.tables.BooksTable;
+import com.kelebro63.storio.databаse.tables.ReadersTable;
 import com.pushtorefresh.storio.sqlite.operations.get.DefaultGetResolver;
 
 /**
@@ -14,8 +16,22 @@ public class BookGetResolver extends DefaultGetResolver<Book> {
     @NonNull
     @Override
     public Book mapFromCursor(Cursor cursor) {
-        Book object = Book.newBook(cursor.getLong(cursor.getColumnIndex("_id")), cursor.getString(cursor.getColumnIndex("name")),
-                cursor.getString(cursor.getColumnIndex("author")), Reader.newReader((long) 125454545, ""));
-        return object;
+
+        final Reader reader = Reader.newReader(
+                cursor.getLong(cursor.getColumnIndexOrThrow(ReadersTable.COLUMN_ID)),
+                cursor.getString(cursor.getColumnIndexOrThrow(ReadersTable.COLUMN_NAME))
+        );
+
+        final Book book = Book.newBook(
+                cursor.getLong(cursor.getColumnIndexOrThrow(BooksTable.COLUMN_ID)),
+                cursor.getString(cursor.getColumnIndexOrThrow(BooksTable.COLUMN_AUTHOR)),
+                cursor.getString(cursor.getColumnIndexOrThrow(BooksTable.COLUMN_TITLE)),
+                reader);
+
+
+
+
+        return book;
     }
 }
+
