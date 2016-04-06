@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.support.annotation.NonNull;
 
 import com.kelebro63.storio.databаse.tables.BooksTable;
+import com.kelebro63.storio.databаse.tables.ReadersTable;
 
 /**
  * Created by Kelebro63 on 24.03.2016.
@@ -19,6 +20,7 @@ public class DbOpenHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(@NonNull SQLiteDatabase db) {
         db.execSQL(BooksTable.getCreateTableQuery());
+        db.execSQL(ReadersTable.getCreateTableQuery());
     }
 
     @Override

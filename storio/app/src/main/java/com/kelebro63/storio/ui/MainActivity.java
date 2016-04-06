@@ -80,14 +80,14 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(MainActivity.this, "click", Toast.LENGTH_LONG).show();
         final List<Book> books = new ArrayList<Book>();
 
-        Reader reader = Reader.newReader("test Reader");
+        Reader reader = Reader.newReader((long) 1,"test Reader");
 
-        books.add(Book.newBook("author_1", "title_1", reader));
-        books.add(Book.newBook("author_2", "title_2", reader));
-        books.add(Book.newBook("author_3", "title_3", reader));
+        books.add(Book.newBook((long) 1, "author_1", "title_1", reader));
+        books.add(Book.newBook((long) 2,"author_2", "title_2", reader));
+        books.add(Book.newBook((long) 3,"author_3", "title_3", reader));
 
 
-        // Looks/reads nice, isn't it?
+        // Looks/reads nice, isn't i t?
         storIOSQLite
                 .put()
                 .objects(books)
