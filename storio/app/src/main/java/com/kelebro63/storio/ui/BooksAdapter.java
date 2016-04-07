@@ -40,6 +40,7 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.ViewHolder>{
 
         holder.authorTextView.setText("@" + book.author());
         holder.contentTextView.setText(book.title());
+        holder.readerTextView.setText(book.reader().name());
     }
 
     @Override
@@ -54,6 +55,9 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.ViewHolder>{
 
         @Bind(R.id.tv_title)
         TextView contentTextView;
+
+        @Bind(R.id.tv_reader)
+        TextView readerTextView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
