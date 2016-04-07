@@ -2,7 +2,7 @@ package com.kelebro63.storio.databаse.tables;
 
 import android.support.annotation.NonNull;
 
-import com.pushtorefresh.storio.sqlite.queries.Query;
+import com.pushtorefresh.storio.sqlite.queries.RawQuery;
 
 /**
  * Created by Bistrov Alexey on 24.03.2016.
@@ -31,9 +31,14 @@ public class BooksTable {
 
     // Yep, with StorIO you can safely store queries as objects and reuse them, they are immutable
     @NonNull
-    public static final Query QUERY_ALL = Query.builder()
-            .table(TABLE)
-            .build();
+    public static final RawQuery QUERY_ALL =
+            RawQuery.builder()
+                    .query("SELECT * FROM books JOIN readers ON books._id = readers.book_id")
+                    .build();
+
+//            Query.builder()
+//            .table(TABLE)
+//            .build();
 
     // This is just class with Meta Data, we don't need instances
     private BooksTable() {
