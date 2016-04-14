@@ -14,7 +14,9 @@ import com.kelebro63.storio.R;
 import com.kelebro63.storio.databаse.Entities.Book;
 import com.kelebro63.storio.databаse.Entities.Reader;
 import com.kelebro63.storio.databаse.tables.BooksTable;
+import com.kelebro63.storio.databаse.tables.ReadersTable;
 import com.pushtorefresh.storio.sqlite.StorIOSQLite;
+import com.pushtorefresh.storio.sqlite.operations.delete.DeleteResult;
 import com.pushtorefresh.storio.sqlite.operations.put.PutResults;
 import com.pushtorefresh.storio.sqlite.queries.DeleteQuery;
 
@@ -83,8 +85,8 @@ public class MainActivity extends AppCompatActivity {
         Reader reader = Reader.newReader("test Reader");
 
         books.add(Book.newBook((long) 1, "author_1", "title_1", reader));
-        books.add(Book.newBook((long) 2,"author_2", "title_2", reader));
-        books.add(Book.newBook((long) 3,"author_3", "title_3", reader));
+        books.add(Book.newBook((long) 2, "author_2", "title_2", reader));
+        books.add(Book.newBook((long) 3, "author_3", "title_3", reader));
 
 
         // Looks/reads nice, isn't i t?
@@ -103,12 +105,12 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void onNext(PutResults<Book> putResults) {
-                        // After successful Put Operation our subscriber in reloadData() will receive update!
+                        reloadData();
                     }
 
                     @Override
                     public void onCompleted() {
-                        // no impl required
+
                     }
                 });
     }
@@ -118,10 +120,28 @@ public class MainActivity extends AppCompatActivity {
         storIOSQLite
                 .delete()
                 .byQuery(DeleteQuery.builder()
-                        .table("books")
+                        .table(BooksTable.TABLE).table(ReadersTable.TABLE)
                         .build())
                 .prepare()
-                .executeAsBlocking();
+                .asRxObservable() // it will be subscribed to changes in tweets table!
+                .delay(1, SECONDS) // for better User Experience :) Actually, StorIO is so fast that we need to delay emissions (it's a joke, or not)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<DeleteResult>() {
+                    @Override
+                    public void onCompleted() {
+                        reloadData();
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onNext(DeleteResult deleteResult) {
+
+                    }
+                });
 
     }
 
